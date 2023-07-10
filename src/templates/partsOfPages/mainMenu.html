@@ -1,0 +1,55 @@
+<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <svg class="bi pe-none me-2" width="40" height="32">
+        <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-4">Проект ЭМИС-2201</span>
+</a>
+<hr />
+<ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+        <a href="/" class='nav-link {{if eq (index . "button_highlighting") `@`}}active{{else}}link-dark{{end}}' aria-current="page">
+            <i class="bi-bank"></i>
+            Главная
+        </a>
+    </li>
+    <li>
+        <a href="/tasks/" class='nav-link {{if eq (index . "button_highlighting") `tasks`}}active{{else}}link-dark{{end}}' aria-current="page">
+            <i class="bi bi-journal-text"></i>
+            Задания
+        </a>
+    </li>
+    <li>
+        <a href="/results/" class='nav-link {{if eq (index . "button_highlighting") `results`}}active{{else}}link-dark{{end}}' aria-current="page">
+            <i class="bi bi-graph-up"></i>
+            Результаты
+        </a>
+    </li>
+    <li>
+        <a href="/literature/" class='nav-link {{if eq (index . "button_highlighting") `literature`}}active{{else}}link-dark{{end}}' aria-current="page">
+            <i class="bi bi-book-half"></i>
+            Литература
+        </a>
+    </li>
+</ul>
+<hr />
+<div class="dropdown">
+    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        {{if index . "user_avatar"}}
+        <picture>
+            <source srcset='/static/images/profile/{{index . "user_avatar"}}/200.webp' type="image/webp">
+            <img src='/static/images/profile/{{index . "user_avatar"}}/200.jpg'
+                class="rounded-circle me-2 circle-profile" alt="фото профиля" width="32" height="32">
+        </picture>
+        {{else}}
+        <div class="rounded-circle me-2 text-light circle-profile">{{index . "user_char"}}</div>
+        {{end}}
+        <strong>{{index . "user_login"}}</strong>
+    </a>
+    <ul class="dropdown-menu text-small shadow">
+        <li><a class="dropdown-item" href='/@{{index . "user_login"}}'>Профиль</a></li>
+        <li><a class="dropdown-item" href="#">Настройки</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="/logout/">Выход</a></li>
+    </ul>
+</div>

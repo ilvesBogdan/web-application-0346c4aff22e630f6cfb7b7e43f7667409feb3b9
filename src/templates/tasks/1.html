@@ -1,0 +1,173 @@
+{{/* Управление Проектами - 1 */}}
+<section id="question-1" class="question p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Задание 1</h1>
+        <p class="col-md-8 fs-4 w-100 text-justify">
+            В команде есть конкретное число сотрудников, которые занимаются
+            реализацией своей части проекта. Вам представлены люди с их
+            характерными soft-навыками, чертами характера, привычками. Необходимо
+            соотнести, насколько каждый из сотрудников подойдёт под ту или иную
+            роль. Возьмём IT-проект, занимающийся мобильной разработкой, в котором
+            Вы – условный HR-специалист. Ваш фреймворк по организации работы –
+            Scrum.
+        </p>
+        <div class="card text-white bg-primary mb-3 w-100">
+            <div class="card-header">Важно!</div>
+            <div class="card-body">
+                <p class="card-text">Чтобы решить эту задачу необходимо ознакомиться с руководством по Scrum Кена
+                    Швабера и
+                    Джеффа Сазерленд «Исчерпывающее руководство по Scrum: Правила игры», 2020<br>(а именно, стр. 3, 5,
+                    6).</p>
+            </div>
+        </div>
+
+        <div class="btn-group mb-4">
+            <button type="button" class="btn btn-outline-primary btn-sm">Product Owner</button>
+            <button type="button" class="btn btn-outline-primary btn-sm">Developer</button>
+            <button type="button" class="btn btn-outline-primary btn-sm">Scrum Master / Team-лидер</button>
+        </div>
+
+        <div class="mrg-20 d-flex flex-row gap-4 flex-wrap p-4 mb-4 bg-light border rounded-3">
+
+            <div class="card droppable w-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Богдан</h5>
+                    <p class="card-text">заинтересован в помощи своим сотрудникам; доходчиво объясняет ошибки и какие
+                        нужно
+                        сделать доработки; максимально умеет контролировать процесс, убеждаясь, что все события проходят
+                        позитивны, продуктивны и не выходят за рамки ограничений времени.</p>
+                </div>
+            </div>
+
+            <div class="card droppable w-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Глеб</h5>
+                    <p class="card-text">сосредотачивается на технических элементах реализации проекта; самостоятельно
+                        может
+                        выполнять задачи или делегировать её другим людям; умеет завоевать уважение к себе людей;
+                        выслушивает и
+                        разбирается в запросах своих коллег.</p>
+                </div>
+            </div>
+
+            <div class="card droppable w-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Дмитрий</h5>
+                    <p class="card-text">готов приступить к решению любой задачи; самостоятельно разбирается в
+                        незнакомой ему
+                        области; понимает общий процесс организации работы и цель проекта команды.</p>
+                </div>
+            </div>
+
+            <div class="card droppable w-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Александр</h5>
+                    <p class="card-text">не боится задавать вопросы открыто, если что-то не понятно; наблюдается
+                        элементы
+                        перфекционизма; стремится к качественному исполнению работ посредством соблюдения выполнения
+                        ежедневного
+                        плана.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-100 d-flex flex-row justify-content-center">
+            <button class="send-button btn btn-primary text-uppercase w-50" type="button">отправить на проверку</button>
+        </div>
+    </div>
+    <script>
+        (() => {
+            // Задание 1
+            const question = document.getElementById('question-1');
+
+            function isElementInElement(element1, element2) {
+                let c1 = element2.getBoundingClientRect();
+                let c2 = element1.getBoundingClientRect();
+                return c1.top < c2.top && c1.bottom > c2.bottom && c1.left < c2.left && c1.right > c2.right;
+            }
+
+            function cursorChaser(element) {
+                let cursorChaserEvent = function (mouse) {
+                    element.style.top = mouse.clientY;
+                    element.style.left = mouse.clientX;
+                }
+                if (element.classList.contains('cur-move')) {
+                    element.classList.remove('cur-move');
+                    element.removeEventListener('mousemove', element, false)
+                } else {
+                    element.classList.add('cur-move');
+                    element.style.display = 'inlineblock';
+                    element.addEventListener('click', isCursourDroppable, false);
+                    question.addEventListener('mousemove', cursorChaserEvent, false);
+                }
+            }
+
+            function isCursourDroppable() {
+                let cursorElement = document.querySelector('.cur-move');
+                for (let element of question.querySelectorAll('div.droppable')) {
+                    if (isElementInElement(cursorElement, element)) {
+                        let container = element.querySelector('.card-title');
+                        for (let c of container.getElementsByTagName(cursorElement.tagName))
+                            if (c.innerText == cursorElement.innerText)
+                                return undefined;
+                        var cloneCursorElement = cursorElement.cloneNode(true);
+                        cloneCursorElement.classList.remove('cur-move');
+                        cloneCursorElement.style = "cursor: grab;"
+                        cloneCursorElement.onclick = function (e) {
+                            setTimeout(function () {
+                                e.target.remove();
+                            }, 130);
+                            e.target.animate([
+                                { opacity: 1, cursor: 'grabbing' },
+                                { opacity: 0, transform: 'translateY(-100%)' }
+                            ], 150);
+                        };
+                        element.querySelector('.card-title').appendChild(cloneCursorElement);
+                    }
+                }
+                cursorElement.remove();
+                for (let i of document.querySelectorAll('button.btn-sm'))
+                    i.disabled = false;
+            }
+
+            for (let button of document.querySelectorAll('button.btn-sm')) {
+                button.addEventListener("click", function () {
+                    for (let i of question.querySelectorAll('button.btn-sm'))
+                        i.disabled = true;
+                    let bange = document.createElement('span');
+                    bange.classList.add('badge');
+                    bange.classList.add('badge-primary');
+                    bange.innerText = button.innerText;
+                    cursorChaser(bange);
+                    document.body.appendChild(bange);
+                    let c = button.getBoundingClientRect();
+                    bange.style.top = (c.bottom - c.top) / 2 + c.top;
+                    bange.style.left = (c.right - c.left) / 2 + c.left;
+                });
+            }
+
+            question.querySelector('button.send-button').addEventListener('click', (e) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "/api/", true);
+
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.onload = () => console.log(xhr.responseText);
+
+                let fullData = [];
+                for (let i of question.querySelectorAll('.droppable h5')) {
+                    let data = new Object();
+                    let arr = [];
+                    for (let c of i.children) arr.push(c.textContent);
+                    data['name'] = i.childNodes[0].textContent;
+                    data['properties'] = arr;
+                    fullData.push(data);
+                }
+
+                xhr.send(JSON.stringify(fullData));
+            })
+        })();
+    </script>
+</section>

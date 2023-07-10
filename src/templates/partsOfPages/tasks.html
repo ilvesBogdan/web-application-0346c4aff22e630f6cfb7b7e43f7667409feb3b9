@@ -1,0 +1,31 @@
+<div class="col-md-6 w-100">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 bg-light shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column text-center position-static bg-light">
+            <h1 class="display-4 fw-bold">Задания</h1>
+            <div class="col p-4 d-flex flex-row">
+
+                {{$data := (index . "data")}}
+                {{range (index . "data_keys")}}
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+                    <a href="/"
+                        class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                        <span class="fs-5 fw-semibold">{{ . }}</span>
+                    </a>
+                    <div class="list-group list-group-flush border-bottom scrollarea">
+                        {{range (index $data . )}}
+                        <a href="{{ .HtmlNum }}/" class="list-group-item list-group-item-action py-3 lh-sm">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                <strong class="mb-1">{{ .Name }}</strong>
+                                <small></small>
+                            </div>
+                            <div class="col-10 mb-1 text-start small">{{ .Description }}</div>
+                        </a>
+                        {{end}}
+                    </div>
+                </div>
+                {{end}}
+
+            </div>
+        </div>
+    </div>
+</div>

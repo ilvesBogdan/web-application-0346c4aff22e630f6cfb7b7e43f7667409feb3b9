@@ -1,0 +1,110 @@
+{{/* Управление Проектами - 2 */}}
+<section id="question-2" class="question p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Задание 2</h1>
+        <p class="col-md-8 fs-4 w-100 text-justify">Вам даны этапы проекта. Необходимо поставить их в верном порядке.
+        </p>
+        <div class="card text-white bg-primary mb-3 w-100">
+            <div class="card-header">Важно!</div>
+            <div class="card-body">
+                <p class="card-text">Чтобы решить эту задачу необходимо ознакомиться с теорией жизненного цикла проекта
+                </p>
+            </div>
+        </div>
+
+        <div class="sortable mrg-20 row gap-4 p-4 mb-4 bg-light border rounded-3">
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Определение стратегии</h5>
+                    <p class="card-text">описание требований, оценки их реализации, бюджета и возможности выполнения
+                        работ для
+                        клиентов на взаимных условиях.</p>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Анализ</h5>
+                    <p class="card-text">исследование определенных функций, связей и атрибутов.</p>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Проектирование</h5>
+                    <p class="card-text">сбор данных.</p>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Реализация</h5>
+                    <p class="card-text">разработка продукта, взаимодействие команды для достижения оставленных целей.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Тестирование</h5>
+                    <p class="card-text">испытание продукта.</p>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Внедрение</h5>
+                    <p class="card-text">запуск продукта, тестирование клиентами.</p>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-row">
+                <i class="bi-justify m-auto"></i>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bolder">Техническая поддержка</h5>
+                    <p class="card-text">постоянное взаимодействие с клиентами.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-100 d-flex flex-row justify-content-center">
+            <button class="send-button btn btn-primary text-uppercase w-50" type="button">отправить на проверку</button>
+        </div>
+    </div>
+    <script>
+        (function () {
+            // Задание 2
+            const question = document.getElementById('question-2');
+
+            let container = question.querySelector('.sortable');
+            for (let block of question.querySelectorAll('.sortable > div')) {
+                block.onmouseup = block.mouseout = function (e) {
+                    container.onmousemove = undefined;
+                    e.target.style.top = 0;
+                    block.style.zIndex = 1;
+                }
+                block.onmousedown = function (e) {
+                    block.style.zIndex = 5;
+                    let c = container.getBoundingClientRect()
+                    let bb = block.getBoundingClientRect();
+                    container.onmousemove = function (e) {
+                        let center = (bb.bottom - bb.top) / 2;
+                        let shift = bb.top + pageYOffset + center;
+                        if (c.top > bb.top || c.bottom < bb.bottom)
+                            block.style.top = 0;
+                        else
+                            block.style.top = e.pageY - shift + 'px';
+                    }
+                }
+            }
+        })();
+    </script>
+</section>

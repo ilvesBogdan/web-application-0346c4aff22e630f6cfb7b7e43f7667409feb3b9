@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Отладочный запуск приложения",
+            "type": "go",
+            "mode": "debug",
+            "request": "launch",
+            "env": {
+                "db_user": "admin",
+                "db_password": "admin",
+                "main_db_name": "users_and_tasks",
+                "session_key": "mQfkmKe0q62RhkpjeCsXKqqd"
+            },
+            "program": "${workspaceFolder}/main.go"
+        }
+    ]
+}

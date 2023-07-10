@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Проект ЭМИС-2201" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column align-items-center p-5">
+
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static bg-light">
+
+                <h4 class="mb-3">Регистрация</h4>
+                <div class="row g-3">
+
+                    <div class="col-12">
+                        <label for="full-name" class="form-label">Ф.И.О.</label>
+                        <input type="full-name" class="form-control" id="full-name">
+                        <div class="invalid-feedback">
+                            Введены некорректные данные.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="login" class="form-label">Логин</label>
+                        <p><small>Только латинские буквы или цифры, допустимая длина от 4 до 50 символов.</small></p>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">@</span>
+                            <input type="text" class="form-control" id="login" placeholder="Login" required="">
+                            <div class="invalid-feedback">
+                                Введен некорректный логин.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email <span
+                                class="text-muted">(Опционально)</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <div class="invalid-feedback">
+                            введите корректный адрес электронной почты.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="input-password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="input-password">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="input-password2" class="form-label">Повторите пароль</label>
+                        <input type="password" class="form-control" id="input-password2" disabled>
+                        <div class="invalid-feedback">
+                            Пароли не совпадают.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="get-avatar" class="form-label">Выберите аватар <span
+                                class="text-muted">(Опционально)</span></label>
+                        <input class="form-control form-control-sm" id="get-avatar" type="file">
+                        <div class="invalid-feedback">
+                            Файл слишком велик.
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="col-md-4">
+                        <label for="faculty" class="form-label">Факультет</label>
+                        <select class="form-select" id="faculty">
+                            <option value="">Выберите...</option>
+                            <option>РТФ</option>
+                            <option>РКФ</option>
+                            <option>ФВС</option>
+                            <option>ФСУ</option>
+                            <option>ФЭТ</option>
+                            <option>ФИТ</option>
+                            <option>ЭФ</option>
+                            <option>ГФ</option>
+                            <option>ЮФ</option>
+                            <option>ФБ</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Выберите факультет.
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="group" class="form-label">Группа</label>
+                        <input type="text" class="form-control" id="group">
+                        <div class="invalid-feedback">Группа.</div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="form-check mb-4">
+                    <input type="checkbox" class="form-check-input" id="approval">
+                    <label class="form-check-label" for="same-address">Cогласны на все!</label>
+                </div>
+
+                <button class="w-100 btn btn-primary btn-lg" type="submit" disabled>Зарегистрироваться</button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/static/scripts/registration.js"></script>
+</body>
+
+</html>

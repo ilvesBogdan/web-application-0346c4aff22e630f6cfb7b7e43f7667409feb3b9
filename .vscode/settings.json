@@ -1,0 +1,38 @@
+{
+    "[html]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": false,
+        "breadcrumbs.showInterfaces": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced"
+    },
+    "go.lintOnSave": "workspace",
+    "go.vetOnSave": "workspace",
+    "go.lintTool": "golint",
+    "files.eol": "\n",
+    "editor.tabSize": 4,
+    "go.inferGopath": false,
+    "files.encoding": "utf8",
+    "editor.formatOnSave": true,
+    "json.validate.enable": true,
+    "window.title": "EMIS 2201 — WebApp",
+    "go.toolsManagement.autoUpdate": true,
+    "css.completion.completePropertyWithSemicolon": true,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+}

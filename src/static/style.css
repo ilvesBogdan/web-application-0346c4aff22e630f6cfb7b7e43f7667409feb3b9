@@ -1,0 +1,81 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#main-menu {
+  position: fixed;
+  height: 100%;
+  width: 220pt;
+}
+
+body>main {
+  margin: 10pt 10pt 10pt 230pt;
+  height: min-content;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.no-avatar {
+  display: flex;
+  height: 150pt;
+  width: 150pt;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-avatar::before {
+  font-size: 150pt;
+}
+
+.circle-profile {
+  display: flex;
+  width: 24pt;
+  height: 24pt;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+}
+
+/* Задание 1 */
+.badge-primary {
+  color: #fff;
+  font-size: small;
+  margin: 1pt 2pt;
+  background-color: #007bff;
+  animation-duration: .6;
+  animation: cur-move-vanish;
+}
+
+.send-button {
+  margin: 0 auto 0 auto;
+}
+
+.cur-move {
+  display: block;
+  z-index: 1000;
+  position: fixed;
+  cursor: grabbing;
+  animation-duration: .5s;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes cur-move-vanish {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Задание 2 */
+#question-2 .card {
+  position: relative;
+}
+
+#question-2 .card>i {
+  font-size: 30pt;
+}
